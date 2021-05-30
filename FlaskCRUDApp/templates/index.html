@@ -52,11 +52,13 @@
 
                     </tr>
 
+                    {% for row in employees %}
+
                     <tr>
-                        <td>01</td>
-                        <td>Dave</td>
-                        <td>test@test.com</td>
-                        <td>040404040404</td>
+                        <td>{{row.id}}</td>
+                        <td>{{row.name}}</td>
+                        <td>{{row.email}}</td>
+                        <td>{{row.phone}}</td>
                         <td>
                             <a href="" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit">Edit</a>
                             <a href="" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure you want to delete?')"">Delete</a>
@@ -112,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-
+                    {% endfor %}
                 </table>
             </div>
 
