@@ -1,9 +1,25 @@
 from flask import Flask, render_template
-
+from flask_sqlalchemy import SQLAlchemy, sqlalchemy
 
 
 
 app = Flask(__name__)
+app.secret_key = "Secret Key"
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/dave/code/FlaskLab/FlaskCRUDApp/crud.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Data(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    name = db.Column(db.String(100))
+    email = db.Column(db.String(100))
+    phone = db.Column(db.String(100))
+
+    def __init__(self, name, email, phone):
+        self.name = name
+        self.email = email
+        self.phone = phone
 
 
 @app.route('/')
